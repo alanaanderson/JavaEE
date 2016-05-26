@@ -24,17 +24,9 @@ import com.airline.service.FlightServiceStatelessBean;
 public class FlightDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB(beanName = "flightStateless")
 	private FlightLocal_ejb fs;
 	
-	@EJB(beanName = "flightStateless")
-	private FlightLocal_ejb fs2;
-	
-	@EJB(beanName = "flightStateful")
 	private FlightLocal_ejb fsStateful;
-	
-	@EJB(beanName = "flightStateful")
-	private FlightLocal_ejb fsStateful2;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,23 +42,29 @@ public class FlightDetails extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("The flight details servlet has been called...");
 		
+		try {
+			Context context = new InitialContext();
+			
+			Object fsObj = context.lookup("java:global/ejb/flightStateless!com.airline.service.FlightLocal_ejb");
+			
+			fs = (FlightLocal_ejb) fsObj;
+			
+			Object fsStatefulObj = context.lookup("java:global/ejb/flightStateful!com.airline.service.FlightLocal_ejb");
+			
+			fsStateful = (FlightLocal_ejb) fsStatefulObj;
+		}
+		catch(NamingException e) {
+			System.out.println("Naming exception has occured in the lookup of our FlighService EJBs");
+			e.printStackTrace();
+		}
+		
 		// Stateless
-		out.println("Flight Details: " + fs.getFrom() + " to " + fs.getTo());
-		
-		fs2.setFrom("Paris");
-		fs2.setTo("Rome");
-		
 		out.println("Flight Details: " + fs.getFrom() + " to " + fs.getTo());
 
 		// Stateful
 		out.println("Flight Details: " + fsStateful.getFrom() + " to " + fsStateful.getTo());
 		
-		fsStateful2.setFrom("Paris");
-		fsStateful2.setTo("Rome");
-		
-		out.println("Flight Details: " + fsStateful.getFrom() + " to " + fsStateful.getTo());
 
-		out.println("Flight Details: " + fsStateful2.getFrom() + " to " + fsStateful2.getTo());
 
 	}
 
