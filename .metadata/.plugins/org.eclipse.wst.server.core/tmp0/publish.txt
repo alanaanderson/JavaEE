@@ -1,9 +1,0 @@
-#GlassFish 3
-#Thu May 26 11:55:23 PDT 2016
-org.eclipse.jst.jee.server\:ejb1=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/ejb1
-org.eclipse.jst.jee.server\:ejb=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/ejb
-org.eclipse.jst.jee.server\:web6=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/web6
-org.eclipse.jst.jee.server\:web4=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/web4
-org.eclipse.jst.jee.server\:web3=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/web3
-org.eclipse.jst.jee.server\:web2=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/web2
-org.eclipse.jst.jee.server\:web1=/Users/alanaanderson/Downloads/glassfish4/glassfish/domains/domain1/eclipseApps/web1
